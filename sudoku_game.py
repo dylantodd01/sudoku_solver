@@ -10,18 +10,6 @@ class Sudoku:
         """ Initialise the sudoku grid, GUI class and some basic Suduko class variables """
 
         self.board = [
-        [6, 0, 0, 5, 0, 0, 0, 0, 0],
-        [3, 8, 0, 0, 0, 0, 6, 0, 2],
-        [0, 1, 0, 0, 0, 8, 0, 9, 7],
-        [8, 0, 1, 0, 6, 2, 3, 7, 4],
-        [4, 0, 9, 7, 8, 5, 1, 0, 6],
-        [7, 0, 2, 3, 0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 5, 0, 0, 6, 3],
-        [0, 7, 0, 0, 0, 0, 9, 0, 0],
-        [1, 0, 0, 0, 9, 6, 0, 0, 0]
-        ]
-
-        self.board = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -47,7 +35,7 @@ class Sudoku:
 
 
     def start(self):
-        self.gui.update_screen(self.board, self.current_entry, self.backtracked, self.solved)
+        self.gui.update_screen(self.board, self.current_entry, self.backtracked, self.solved, cell_loc=(0, 0))
         while True:
             event = self.gui.check_events(self.play)
 
@@ -65,7 +53,7 @@ class Sudoku:
                     number = event
                 self.prep_board(number)
                 self.gui.update_screen(self.board, self.current_entry, self.backtracked, self.solved, clicked=False, cell_loc=self.cell_loc)
-                
+
 
     def prep_board(self, number):
         if self.r == 9:
@@ -111,7 +99,7 @@ class Sudoku:
         return None
 
     def valid_entries(self, row_n, col_n):
-        """ Returns a list of the possible entries for a given square on the board """
+        """ Returns a list of the possible entries for a given cell in the board """
 
         row = self.board[row_n]
         col = [self.board[y][col_n] for y in range(9)]

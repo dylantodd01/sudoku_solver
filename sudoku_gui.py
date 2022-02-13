@@ -22,7 +22,7 @@ class Gui:
 		self.text = OutputText(self.screen)
 
 
-	def update_screen(self, board, current_entry, backtracked, solved, clicked=False, cell_loc=(-100,-100)):
+	def update_screen(self, board, current_entry, backtracked, solved, clicked=False, cell_loc=(-100, -100)):
 		self.screen.fill(self.background_colour)
 		self.draw_grid()
 		self.populate_grid(board)
